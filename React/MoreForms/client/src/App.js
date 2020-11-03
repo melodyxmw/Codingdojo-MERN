@@ -1,5 +1,5 @@
 import React, {useState } from "react";
-
+import './App.css';
 import Results from "./components/Results";
 import Form from './components/Form';
 
@@ -12,12 +12,11 @@ function App() {
     password:"",
     confirmPassword:"",
   })
-
-
   return (
     <div className="App">
       <Form inputs={state} setInputs={setState}/>
       <Results data={state}/>
+      
     </div>
   );
 }

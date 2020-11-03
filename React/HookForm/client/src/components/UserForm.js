@@ -1,38 +1,33 @@
 import React, { useState } from  'react';
-
+    
+    
 const UserForm = (props) => {
-    const {inputs, setInputs} = props;
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");  
     
     const createUser = (e) => {
         e.preventDefault();
-        setInputs({
-            ...inputs,
-            [e.target.name]: e.target.value
-        })
-       
+        const newUser = { username, email, password };
+        console.log("Welcome", newUser);
+        // inside of the createUser function
+        setUsername("");
+
     };
     
     return(
         <form onSubmit={ createUser }>
             <div>
-                <label htmlFor="firstName">First name: </label> 
-                <input type="text" name="firstName" onChange={ createUser } />
-            </div>
-            <div>
-                <label htmlFor="lastName">Last name: </label> 
-                <input type="text" name="lastName" onChange={ createUser } />
+                <label>Username: </label> 
+                <input type="text" onChange={ (e) => setUsername(e.target.value) } value={ username } />
             </div>
             <div>
-                <label htmlFor="email">Email Address: </label> 
-                <input type="text" name="email" onChange={ createUser } />
+                <label>Email Address: </label> 
+                <input type="text" onChange={ (e) => setEmail(e.target.value) } />
             </div>
             <div>
-                <label htmlFor="password">Password: </label>
-                <input type="text" name="password" onChange={ createUser } />
-            </div>
-            <div>
-                <label htmlFor="confirmPassword">Comfirm Password: </label>
-                <input type="text" name="confirmPassword" onChange={ createUser } />
+                <label>Password: </label>
+                <input type="text" onChange={ (e) => setPassword(e.target.value) } />
             </div>
             <input type="submit" value="Create User" />
         </form>
